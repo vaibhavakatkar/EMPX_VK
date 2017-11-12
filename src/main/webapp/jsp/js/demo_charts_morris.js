@@ -1,79 +1,131 @@
 var morrisCharts = function() {
+	var da;
+var settings = {
+		  "async": true,
+		  "crossDomain": true,
+		  "url": "http://localhost:8080/Employee/getAll?type=employee",
+		  "method": "GET",
+		  "headers": {
+		    "content-type": "application/json",
+		    "cache-control": "no-cache",
+		    "postman-token": "5808c21c-9964-6bfa-65fe-4e034b8ce673"
+		  }
+		}
 
-    Morris.Line({
-      element: 'morris-line-example',
-      data: [
-        { y: '2006', a: 100, b: 90 },
-        { y: '2007', a: 75,  b: 65 },
-        { y: '2008', a: 50,  b: 40 },
-        { y: '2009', a: 75,  b: 65 },
-        { y: '2010', a: 50,  b: 40 },
-        { y: '2011', a: 75,  b: 65 },
-        { y: '2012', a: 100, b: 90 }
-      ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      labels: ['Series A', 'Series B'],
-      resize: true,
-      lineColors: ['#33414E', '#95B75D']
-    });
-    function Graph() {
-        var data = "";
-        $.ajax({
-            type: 'POST',
-            url: 'Home.aspx/GetPiechartData',
-            dataType: 'json',
-            async: false,
-            contentType: "application/json; charset=utf-8",
-            data: {},
-            success: function (result) {
-                data = result.d;
-            },
-            error: function (xhr, status, error) {
-                alert(error);
-            }
-        });
+		$.ajax(settings).done(function (response) {	
+		  
+		  var arr=new Array();
+		  var parsedData = JSON.parse(response)
+		  arr=parsedData;
+		  var javacount = 150;
+		  var dotnet=76;
+		  var date ;
+		  var finaldata= new Array();
+		 
+		 /* alert(finaldata.substr(3));
+		 */
+		  
+		//  debugger;
+		  for(var i = 0; i < arr.length; i++) {
+			var a=arr[0].joindate;
+			/*	  document.write("<br><br>array index: " + i);
+				  var obj = arr[i];
+				  for (var key in obj){
+				    var value = obj[key];*/
+		
+				    if(arr[i].joindate==arr[i].joindate)
+				    	{
+				         date=arr[i].joindate;
+				   	    }
+				    if(arr[i].skill=="JAVA")
+				    	{
+				    	javacount++;
+				    	}
+				    if(arr[i].skill=="SPARK")
+			    	{
+				    	dotnet++;
+			    	}
+				    finaldata[i]='{'+"\"y\":"+"\""+date+"\""+",\"a\":"+javacount+", \"b\":"+dotnet+'}';
+				 //   finaldata[i]=assas;
+				 
+		  }
+		  //	debugger;
+		  //var abc="["+finaldata.slice(11, -1)+"]";
+		 // res =finaldata.replace("""", "");
+		 // var result = res.substring(1, res.length-1);
+		//  da=JSON.stringify(result);
+		//  alert(da)
+		 // alert(res)
+		 /* var string = finaldata;
+		    string.replace (/"/g,''); //"[apple,orange,pear]"
+		    alert(string)*/
+		 
+		  response=finaldata;
+		//  alert(finaldata);
+		response=response.toString();
+		// var ar= (res);
+			
+		  
+		 // var array=ar.replace(/^'/, "");
+		  //array=ar.replace(/'$/, "");	
+		 // array=array.slice(0,array.length) ;
+		 var hi=response;
+		var hiii;
+		for(i = 0; i < hi.length; i++)
+		 {
+		     hi[i] = hi[i].replace('\"','');
+		    // hiii[i]= hi[i].replace(/"/g,'');
+		        //alert(str1);
+		     }
+		    // hi="["+hi+"]";
+	     var qwe=new Array();
+		     qwe="["+hi+"]";
+		     debugger;
+		     alert(qwe)
+		//     var aaaa=finaldata.replace(/"/g,'');
+		    
+		      console.log(qwe);
+		    qwe=JSON.parse(qwe);
+		    
+	    	  abc(qwe);
+		     
+		    
+		  //abc(array);
+		  //return response;
+		  });
+
+function abc(qwe) {
+	
+	
+	  Morris.Line({
+	    	 
+	      element: 'morris-line-example',
+	      data:qwe,
+	      xkey: "y",
+	      ykeys: ["a", "b","c"],
+	      labels: ['JAVA', 'SAPARK','asdasd'],
+	      resize: true,
+	      lineColors: ['#33414E', '#95B75D', '#95hf5D']
+	    });
+	  Morris.Area({
+	        element: 'morris-area-example',
+	        data:qwe,
+	        xkey: 'y',
+	        ykeys: ['a', 'b'],
+	        labels: ['JAVA', 'SPARK'],
+	        resize: true,
+	        lineColors: ['#1caf9a', '#FEA223']
+	    });
+	    Morris.Bar({
+	        element: 'morris-bar-example',
+	        data: qwe,
+	        xkey: 'y',
+	        ykeys: ['a', 'b'],
+	        labels: ['JAVA ', 'SPARK'],
+	        barColors: ['#B64645', '#0000FF']
+	    });
+}
  
-        return data;
-    }
-
-    Morris.Area({
-        element: 'morris-area-example',
-        data: [
-            { y: '2006', a: 100, b: 90 },
-            { y: '2007', a: 75,  b: 65 },
-            { y: '2008', a: 50,  b: 40 },
-            { y: '2009', a: 75,  b: 65 },
-            { y: '2010', a: 50,  b: 40 },
-            { y: '2011', a: 75,  b: 65 },
-            { y: '2012', a: 100, b: 90 }
-        ],
-        xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Series A', 'Series B'],
-        resize: true,
-        lineColors: ['#1caf9a', '#FEA223']
-    });
-
-
-    Morris.Bar({
-        element: 'morris-bar-example',
-        data: [
-            { y: '2006', a: 100, b: 90 },
-            { y: '2007', a: 75,  b: 65 },
-            { y: '2008', a: 50,  b: 40 },
-            { y: '2009', a: 75,  b: 65 },
-            { y: '2010', a: 50,  b: 40 },
-            { y: '2011', a: 75,  b: 65 },
-            { y: '2012', a: 100, b: 90 }
-        ],
-        xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Series A', 'Series B'],
-        barColors: ['#B64645', '#33414E']
-    });
-
-
     Morris.Donut({
         element: 'morris-donut-example',
         data: [
