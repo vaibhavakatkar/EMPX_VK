@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+				http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/aop
+				http://www.springframework.org/schema/aop/spring-aop.xsd
+				http://www.springframework.org/schema/context
+				http://www.springframework.org/schema/context/spring-context.xsd
+				http://www.springframework.org/schema/jee
+				http://www.springframework.org/schema/jee/spring-jee.xsd
+				http://www.springframework.org/schema/lang
+				http://www.springframework.org/schema/lang/spring-lang.xsd
+				http://www.springframework.org/schema/tx
+				http://www.springframework.org/schema/tx/spring-tx.xsd
+				http://www.springframework.org/schema/util
+				http://www.springframework.org/schema/util/spring-util.xsd
+				http://www.springframework.org/schema/mvc
+				http://www.springframework.org/schema/mvc/spring-mvc.xsd
+				http://www.springframework.org/schema/data/mongo
+				http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+	<context:component-scan base-package="com.abc" />
+	<!-- <mvc:resources mapping="/app/**" location="/app"/> -->
+	<mvc:annotation-driven />
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- p:location="classpath://framework.properties"> -->
+		<property name="locations">
+			<list>
+				<value>classpath://framework.properties</value>
+				
+			</list>
+		</property>
+	</bean>
+
+	<bean id="mappingContext"
+		class="org.springframework.data.mongodb.core.mapping.MongoMappingContext" />
+
+	<bean id="defaultMongoTypeMapper"
+		class="org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper">
+		<constructor-arg name="typeKey">
+			<null />
+		</constructor-arg>
+	</bean>
+
+	<mongo:mongo-client id="mongoClient"
+		host="${datapod.register.mongo.host}" port="${datapod.register.mongo.port}">
+		<mongo:client-options connections-per-host="${datapod.register.mongo.connectionsPerHost}"
+			connect-timeout="${datapod.register.mongo.connectTimeout}"
+			max-wait-time="${datapod.register.mongo.maxWaitTime}" />
+	</mongo:mongo-client>
+
+	<bean id="simpleMongoDbFactory"
+		class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
+		<constructor-arg ref="mongoClient" />
+		<constructor-arg name="databaseName"
+			value="${datapod.register.mongo.database}" />
+	</bean>
+
+	<bean id="mappingMongoConverter"
+		class="org.springframework.data.mongodb.core.convert.MappingMongoConverter">
+		<constructor-arg name="mongoDbFactory" ref="simpleMongoDbFactory" />
+		<constructor-arg name="mappingContext" ref="mappingContext" />
+		<property name="typeMapper" ref="defaultMongoTypeMapper" />
+	</bean>
+
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg ref="simpleMongoDbFactory" />
+		<constructor-arg name="mongoConverter" ref="mappingMongoConverter" />
+	</bean>
+	<mongo:repositories base-package="com.abc.dao"
+		mongo-template-ref="mongoTemplate" />
+
+	
+	
+	<bean id="dbConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+  <property name="location" value="classpath://framework.properties"/>
+</bean>
+
+	
+	
+	
+
+	
+
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</bean>
+
+	
+
+	
+	
+	
+	<bean id ="employeeServiceImpl" class ="com.abc.service.EmployeeServiceimpl">
+    </bean> 
+    
+</beans>
