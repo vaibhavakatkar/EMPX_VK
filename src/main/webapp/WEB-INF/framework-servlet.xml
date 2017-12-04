@@ -30,6 +30,8 @@
 	<!-- <mvc:resources mapping="/app/**" location="/app"/> -->
 	<mvc:annotation-driven />
 	
+  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<!-- p:location="classpath://framework.properties"> -->
@@ -87,21 +89,11 @@
 
 	
 	
-	
-
-	
-
-	
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	</bean>
-
-	
-
-	
-	
-	
 	<bean id ="employeeServiceImpl" class ="com.abc.service.EmployeeServiceimpl">
     </bean> 
+	  
+ <!-- <bean id="fileValidator" class="com.abc.validator.FileValidator">
+ </bean> 
+	 -->
     
 </beans>

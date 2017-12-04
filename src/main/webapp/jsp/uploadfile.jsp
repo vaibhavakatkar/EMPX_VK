@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
 <html lang="en">
     <head>        
         <!-- META SECTION -->
@@ -9,10 +9,10 @@
         
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <!-- END META SECTION -->
-        
+                        
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
-        <!-- EOF CSS INCLUDE -->                                     
+        <!-- EOF CSS INCLUDE -->                 
     </head>
     <body>
         <!-- START PAGE CONTAINER -->
@@ -23,19 +23,20 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">Joli Admin</a>
+                        <a href="index.html">Rupesh Admin</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
                         <a href="#" class="profile-mini">
                             <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                            <h1>Rupesh2</h1>
                         </a>
                         <div class="profile">
                             <div class="profile-image">
                                 <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">John Doe</div>
+                                <div class="profile-data-name">Rupesh</div>
                                 <div class="profile-data-title">Web Developer/Designer</div>
                             </div>
                             <div class="profile-controls">
@@ -44,11 +45,11 @@
                             </div>
                         </div>                                                                        
                     </li>
-                    <li class="xn-title">Navigation</li>
+                    <li class="xn-title">Navigation</li>                    
                     <li>
-                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
-                    </li>                    
-                    <li class="xn-openable active">
+                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+                    </li>
+                    <li class="xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
                         <ul>
                             <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
@@ -69,7 +70,7 @@
                                     <li><a href="pages-mailbox-compose.html"><span class="fa fa-pencil"></span> Compose</a></li>
                                 </ul>
                             </li>
-                            <li class="active"><a href="pages-messages.html"><span class="fa fa-comments"></span> Messages</a></li>
+                            <li><a href="pages-messages.html"><span class="fa fa-comments"></span> Messages</a></li>
                             <li><a href="pages-calendar.html"><span class="fa fa-calendar"></span> Calendar</a></li>
                             <li><a href="pages-tasks.html"><span class="fa fa-edit"></span> Tasks</a></li>
                             <li><a href="pages-content-table.html"><span class="fa fa-columns"></span> Content Table</a></li>
@@ -115,10 +116,10 @@
                             <li><a href="layout-search-left.html">Search Left Side</a></li>
                             <li><a href="blank.html">Blank Page</a></li>
                         </ul>
-                    </li>
-                    <li class="xn-title">Components</li>
+                    </li>              
+                    <li class="xn-title">Components</li>                    
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>                        
+                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>
                         <ul>
                             <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>                            
                             <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
@@ -133,7 +134,7 @@
                             <li><a href="ui-tour.html"><span class="fa fa-random"></span> Tour</a></li>
                         </ul>
                     </li>                    
-                    <li class="xn-openable">
+                    <li class="xn-openable active">
                         <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
                         <ul>
                             <li>
@@ -146,7 +147,7 @@
                                     <li><a href="form-layouts-separated.html"><span class="fa fa-th-list"></span> Separated Rows</a></li>
                                 </ul> 
                             </li>
-                            <li><a href="form-elements.html"><span class="fa fa-file-text-o"></span> Elements</a></li>
+                            <li class="active"><a href="form-elements.html"><span class="fa fa-file-text-o"></span> Elements</a></li>
                             <li><a href="form-validation.html"><span class="fa fa-list-alt"></span> Validation</a></li>
                             <li><a href="form-wizards.html"><span class="fa fa-arrow-right"></span> Wizards</a></li>
                             <li><a href="form-editors.html"><span class="fa fa-text-width"></span> WYSIWYG Editors</a></li>
@@ -169,7 +170,7 @@
                             <li><a href="charts-rickshaw.html"><span class="xn-text">Rickshaw</span></a></li>
                             <li><a href="charts-other.html"><span class="xn-text">Other</span></a></li>
                         </ul>
-                    </li>                  
+                    </li>   
                     <li>
                         <a href="maps.html"><span class="fa fa-map-marker"></span> <span class="xn-text">Maps</span></a>
                     </li>                    
@@ -193,8 +194,7 @@
                                 </ul>
                             </li>                            
                         </ul>
-                    </li>
-                    
+                    </li>                    
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
@@ -313,143 +313,97 @@
                     </li>
                     <!-- END TASKS -->
                 </ul>
-                <!-- END X-NAVIGATION VERTICAL -->                     
+                <!-- END X-NAVIGATION VERTICAL -->                   
                 
                 <!-- START BREADCRUMB -->
-                <ul class="breadcrumb push-down-0">
+                <ul class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Pages</a></li>                    
-                    <li class="active">Messages</li>
+                    <li><a href="#">Forms Stuff</a></li>
+                    <li class="active">Form Elements</li>
                 </ul>
-                <!-- END BREADCRUMB -->                
-                                
-                <!-- START CONTENT FRAME -->
-                <div class="content-frame">                                    
-                    <!-- START CONTENT FRAME TOP -->
-                    <div class="content-frame-top">                        
-                        <div class="page-title">                    
-                            <h2><span class="fa fa-comments"></span> Messages</h2>
-                        </div>                                                    
-                        <div class="pull-right">                            
-                            <button class="btn btn-danger"><span class="fa fa-book"></span> Contacts</button>
-                            <button class="btn btn-default content-frame-right-toggle"><span class="fa fa-bars"></span></button>
-                        </div>                           
-                    </div>
-                    <!-- END CONTENT FRAME TOP -->
-                    
-                    <!-- START CONTENT FRAME RIGHT -->
-                    <div class="content-frame-right">
-                        
-                        <div class="list-group list-group-contacts border-bottom push-down-10">
-                            <a href="#" class="list-group-item">                                 
-                                <div class="list-group-status status-online"></div>
-                                <img src="assets/images/users/user.jpg" class="pull-left" alt="Dmitry Ivaniuk">
-                                <span class="contacts-title">Dmitry Ivaniuk</span>
-                                <p>Hello my friend, how are...</p>
-                            </a>                                
-                            <a href="#" class="list-group-item">                                    
-                                <div class="list-group-status status-online"></div>
-                                <img src="assets/images/users/user3.jpg" class="pull-left" alt="Nadia Ali">
-                                <span class="contacts-title">Nadia Ali</span>
-                                <p>Wanna se my photos?</p>
-                            </a>                                                                
-                            <a href="#" class="list-group-item active">         
-                                <div class="list-group-status status-online"></div>
-                                <img src="assets/images/users/user2.jpg" class="pull-left" alt="John Doe">
-                                <div class="contacts-title">John Doe <span class="label label-danger">5</span></div>
-                                <p>This project is awesome</p>                                       
-                            </a>
-                            <a href="#" class="list-group-item">         
-                                <div class="list-group-status status-away"></div>
-                                <img src="assets/images/users/user4.jpg" class="pull-left" alt="Brad Pitt">
-                                <span class="contacts-title">Brad Pitt</span>
-                                <p>ok</p>                     
-                            </a>
-                            <a href="#" class="list-group-item">         
-                                <div class="list-group-status status-offline"></div>
-                                <img src="assets/images/users/no-image.jpg" class="pull-left" alt="Darth Vader">
-                                <span class="contacts-title">Darth Vader</span>
-                                <p>We should win this war!!!1</p>
-                            </a>
-                            <a href="#" class="list-group-item">         
-                                <div class="list-group-status status-offline"></div>
-                                <img src="assets/images/users/no-image.jpg" class="pull-left" alt="Kim Kardashian">
-                                <span class="contacts-title">Kim Kardashian</span>
-                                <p>You received a letter from Darth?</p>
-                            </a>
-                            <a href="#" class="list-group-item">         
-                                <div class="list-group-status status-offline"></div>
-                                <img src="assets/images/users/no-image.jpg" class="pull-left" alt="Jason Statham">
-                                <span class="contacts-title">Jason Statham</span>
-                                <p>Lets play chess...</p>
-                            </a>                            
-                        </div>
-                        
-                        <div class="block">
-                            <h4>Status</h4>
-                            <div class="list-group list-group-simple">                                
-                                <a href="#" class="list-group-item"><span class="fa fa-circle text-success"></span> Online</a>
-                                <a href="#" class="list-group-item"><span class="fa fa-circle text-warning"></span> Away</a>
-                                <a href="#" class="list-group-item"><span class="fa fa-circle text-muted"></span> Offline</a>                                
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- END CONTENT FRAME RIGHT -->
+                <!-- END BREADCRUMB -->
                 
-                    <!-- START CONTENT FRAME BODY -->
-                    <div class="content-frame-body content-frame-body-left">
-                  
-                        <div class="messages messages-img">
-                           
-                            <div  class="item">
-                                <div class="image">
-                                    <img src="assets/images/users/user.jpg" alt="Dmitry Ivaniuk">
-                                </div>                                
-                                <div class="text">
-                                    <div  class="heading">
-                                        <a href="#">Dmitry Ivaniuk</a>
-                                        <span class="date">08:39</span>
-                                    </div>     
-                                    <p  ></p>                               
-                                    Integer et ipsum vitae urna mattis dictum. Sed eu sollicitudin nibh, in luctus velit.
-                                </div>
-                            </div>
-                             
-                        </div>   
-                        <div id="demo">                     
-                         <a>aa</a>
-                         <p>aaa
-                         </p> 
-                       </div>
-                       
-                       
-                       
-                       
-                        <div class="panel panel-default push-up-10">
-                            <div class="panel-body panel-body-search">
-                                <div class="input-group">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default"><span class="fa fa-camera"></span></button>
-                                        <button class="btn btn-default"><span class="fa fa-chain"></span></button>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Your message..."/>
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default">Send</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!-- END CONTENT FRAME BODY -->      
+                <!-- PAGE TITLE -->
+                <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span>  FILE UPLOAD DEMO  </h2>
                 </div>
-                <!-- END PAGE CONTENT FRAME -->
+                <!-- END PAGE TITLE -->                
+                	
+  *************************************************************************************************************************************************************************************
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap" style=" position:absolute; top:150px; bottom: 0; left: 250px; right: 0; margin: auto;">
+                
+                    <div class="row">
+                        <div class="col-md-6">
+
+  <h1>    </h1> 
+                            <!-- START DEFAULT FORM ELEMENTS -->
+                            <div class="block">
+                     
+      <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h3><span class="fa fa-mail-forward"></span> File Input</h3>
+                                    <p>Add class <code>file</code> to file input to get Bootstrap FileInput plugin</p>                                    
+                                    <form enctype="multipart/form-data" class="form-horizontal" id="form2" method="post" action="/cont/upload">                                        
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>Default</label>
+                                                <input type="file" multiple class="file" data-preview-file-type="any" name="file2" id="file2"/>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Disabled</label>
+                                                <input name="file2" id="file2" type="file" multiple class="file" data-preview-file-type="any"/>
+                                            </div>
+                                        </div>
+                                         
+<button value="Submit" class="btn btn-default kv-fileinput-upload" onclick="uploadJqueryForm()" >Upload</button><i>Using JQuery Form Plugin</i><br/>
+<button value="Submit" class="btn btn-success" onclick="uploadFormData()" >Upload</button><i>Using FormData Object</i>
+ 
+                                    </form>
+                                 </div>
+                            </div>
+
+  
+  <h4>SpringMVC - File Upload with/without Ajax</h4> 
+ 
+<form id="form1" method="post" action="/cont/upload" enctype="multipart/form-data"  class="form-horizontal">
+ 
+  <!-- File input -->    
+  <input  multiple class="file" data-preview-file-type="any" name="file" id="file" type="file" /><br/>
+ 
+  <input type="submit" class="btn btn-success" value="Upload" />
+</form>
+<hr/>
+                            </div>
+                            
+                            
+                            
+                            <i>Uploading File With Ajax</i><br/>
+<form id="form3" method="post" action="/cont/upload" enctype="multipart/form-data" enctype="multipart/form-data"  class="form-horizontal">
+  <!-- File input -->    
+  <input  multiple class="file" data-preview-file-type="any" name="file3" id="file3" type="file" /><br/>
+</form>
+ 
+<button value="Submit" class="btn btn-success" onclick="uploadJqueryForm2()" >Upload</button><i>Using JQuery Form Plugin</i><br/>
+<button value="Submit" class="btn btn-default kv-fileinput-upload" onclick="uploadFormData2()" >Upload</button><i>Using FormData Object</i>
+  
+<div id="result"></div>
+                            <!-- END DEFAULT FORM ELEMENTS -->
+
+                                                                    
+                                                
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+                <!-- END PAGE CONTENT WRAPPER -->                                                
             </div>            
             <!-- END PAGE CONTENT -->
         </div>
         <!-- END PAGE CONTAINER -->
-
+        
         <!-- MESSAGE BOX-->
         <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
@@ -473,62 +427,150 @@
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
         <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->                        
+        <!-- END PRELOADS -->             
         
     <!-- START SCRIPTS -->
         <!-- START PLUGINS -->
         <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>        
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap.min.js"></script>                
         <!-- END PLUGINS -->
-
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://malsup.github.com/jquery.form.js"></script>
         <!-- THIS PAGE PLUGINS -->
         <script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
         <script type="text/javascript" src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-        <!-- END PAGE PLUGINS -->     
-
+        
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-datepicker.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-timepicker.min.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-colorpicker.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-file-input.js"></script>
+        <script type="text/javascript" src="js/plugins/bootstrap/bootstrap-select.js"></script>
+        <script type="text/javascript" src="js/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+        <!-- END THIS PAGE PLUGINS -->       
+        
+          <!-- FILE UPLOAD -->      
+         <script type="text/javascript" src="js/plugins/dropzone/dropzone.min.js"></script>
+        <script type="text/javascript" src="js/plugins/fileinput/fileinput.min.js"></script>        
+        <script type="text/javascript" src="js/plugins/filetree/jqueryFileTree.js"></script>
+        
+        
+        
+        
         <!-- START TEMPLATE -->
         <script type="text/javascript" src="js/settings.js"></script>
         
         <script type="text/javascript" src="js/plugins.js"></script>        
         <script type="text/javascript" src="js/actions.js"></script>        
-        
-         <script type="text/javascript">
-		$(document).ready(function() {
+        <script type="text/javascript">
 
-			var settings = {
-				"async" : true,
-				"crossDomain" : true,
-				"url" : "http://localhost:8080/Employee/getAll?type=employee",
-				"method" : "GET",
-				"headers" : {
-					"content-type" : "application/json",
-					"cache-control" : "no-cache",
-					"postman-token" : "66b52fa0-f910-c191-73a6-6d34d18693d1"
-				}
-			}
-		
-			
-			$.ajax(settings).done(function(data) {
-				var parsedData = JSON.parse(data);
-				alert(parsedData)	
-				var text = "";
-				
-				 for (var i = 0; i < parsedData.length; ++i) {
-					 text += parsedData[i].name + "," + parsedData[i].version + "<br>";
-					 document.getElementById("demo").innerHTML = text	; 	
-						
-				} 
-				
-			});
-		});
-	</script>    
-        <!-- END TEMPLATE -->
-    <!-- END SCRIPTS -->         
+        function uploadFormData(){
+            $('#result').html('');
+         
+          var oMyForm = new FormData();
+          oMyForm.append("file", file2.files[0]);
+         
+          $.ajax({
+            url: 'http://localhost:8080/jsp/upload.html',
+            data: oMyForm,
+            dataType: 'text',
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function(data){
+              $('#result').html(data);
+            }
+          });
+        }
     
+     </script>
+     
+     <script>
+   //using jquery.form.js
+     function uploadJqueryForm(){
+         $('#result').html('');
+      
+        $("#form2").ajaxForm({
+         success:function(data) { 
+               $('#result').html(data);
+          },
+          dataType:"text"
+        }).submit();
+     }
+     </script>
+     
+     
+     
+      <script type="text/javascript">
+
+        function uploadFormData2(){
+            $('#result').html('');
+         
+          var oMyForm = new FormData();
+          oMyForm.append("file3", file3.files[0]);
+         
+          $.ajax({
+            url: 'http://localhost:8080/cont/upload',
+            data: oMyForm,
+            dataType: 'text',
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function(data){
+              $('#result').html(data);
+            }
+          });
+        }
+    
+     </script>
+     
+     <script>
+   //using jquery.form.js
+     function uploadJqueryForm2(){
+         $('#result').html('');
+      
+        $("#form3").ajaxForm({
+         success:function(data) { 
+               $('#result').html(data);
+          },
+          dataType:"text"
+        }).submit();
+     }
+     </script>
+     
+     
+     
+     
+     
+        <!--FILE UPLOAD JQUERY animation -->
+      <script>
+            $(function(){
+                $("#file-simple").fileinput({
+                        showUpload: false,
+                        showCaption: false,
+                        browseClass: "btn btn-danger",
+                        fileType: "any"
+                });            
+                $("#filetree").fileTree({
+                    root: '/',
+                    script: 'assets/filetree/jqueryFileTree.php',
+                    expandSpeed: 100,
+                    collapseSpeed: 100,
+                    multiFolder: false                    
+                }, function(file) {
+                    alert(file);
+                }, function(dir){
+                    setTimeout(function(){
+                        page_content_onresize();
+                    },200);                    
+                });                
+            });            
+        </script>
+        
+        <!-- END TEMPLATE -->
+    <!-- END SCRIPTS -->                   
     </body>
 </html>
-
 
 
 
