@@ -4,7 +4,22 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
+
+
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
  
 import javax.servlet.http.HttpServletResponse;
  
@@ -18,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.abc.model.UploadedFile;
+import com.google.gson.Gson;
 
 
 
@@ -33,14 +49,20 @@ public class RestController {
   }
  
   @RequestMapping(value = "/listofFiles", method = RequestMethod.GET)
-  public @ResponseBody String[] listofFile(HttpServletResponse response){
+  public @ResponseBody String listofFile(HttpServletResponse response){
      
-        	   File file = new File("/home/vaibhav/git/EMPX_VK/null/FILE_UPLOAD/");
-               String[] fileList = file.list();
+	   File file = new File("/home/vaibhav/git/EMPX_VK/src/main/webapp/jsp/FILE_UPLOAD/");
+       String[] fileList = file.list();
+  
+        	    HashMap<String , String> hm=new HashMap<>();
                for(String name:fileList){
-                   System.out.println(name);
+            	   hm.put( name,"FILE_NAME");
+                         
                }
-       return fileList;
+               Gson gson = new Gson(); 
+               String json = gson.toJson(hm); 
+               System.out.println(json);
+       return json;
   }
 
   
@@ -67,7 +89,7 @@ public class RestController {
   
  
    @RequestMapping(value = "/upload", method = RequestMethod.POST)
-   public @ResponseBody String upload(MultipartHttpServletRequest request, HttpServletResponse response) {                 
+   public @ResponseBody void upload(MultipartHttpServletRequest request, HttpServletResponse response) {                 
  
      //0. notice, we have used MultipartHttpServletRequest
  
@@ -86,8 +108,10 @@ public class RestController {
 				byte[] bytes = file.getBytes();
 
 				// Creating the directory to store file
-				String rootPath = System.getProperty("catalina.home");
+				String rootPath = "/home/vaibhav/git/EMPX_VK/src/main/webapp/jsp/";
+				System.out.println(rootPath);
 				File dir = new File(rootPath + File.separator + "FILE_UPLOAD");
+		
 				if (!dir.exists())
 					dir.mkdirs();
 
@@ -101,16 +125,17 @@ public class RestController {
 
 				System.out.println("Server File Location="
 						+ serverFile.getAbsolutePath());
-
-				return name;
+				response.sendRedirect("http://localhost:8080/jsp/download.html");
+				return;
 				 
 			
 			} catch (Exception e) {
-				return "You failed to upload " + name + " => " + e.getMessage();
+				//return "You failed to upload " + name + " => " + e.getMessage();
+				System.out.println("You failed to upload " + name + " => " + e.getMessage());
 			}
 		} else {
-			return "You failed to upload " + file.getOriginalFilename()
-					+ " because the file was empty.";
+			System.out.println("You failed to upload " + file.getOriginalFilename()
+					+ " because the file was empty.");
 		}
 
 
@@ -118,26 +143,36 @@ public class RestController {
      
      
      
-     
-     /*try {
-                //just temporary save file info into ufile
-        ufile.length = file.getBytes().length;
-        ufile.bytes= file.getBytes();
-        ufile.type = file.getContentType();
-        ufile.name = file.getOriginalFilename();
- 
-    } catch (IOException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
- */
-         
-     
-     
-     //2. send it back to the client as <img> that calls get method
-     //we are using getTimeInMillis to avoid server cached image 
+  
  
     
   }
+   
+   @RequestMapping(value = "/file/{name}", method = RequestMethod.GET)
+   public ResponseEntity<byte[]> downloadFile(@PathVariable("name") String name) throws IOException {
+       String filename = "/home/vaibhav/git/EMPX_VK/src/main/webapp/jsp/FILE_UPLOAD/" + name+".png";
+       InputStream inputImage = new FileInputStream(filename);
+       ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+       byte[] buffer = new byte[512];
+       int l = inputImage.read(buffer);
+       while(l >= 0) {
+           outputStream.write(buffer, 0, l);
+           l = inputImage.read(buffer);
+       }
+       HttpHeaders headers = new HttpHeaders();
+       headers.set("Content-Type", "image/jpeg");
+       headers.set("Content-Disposition", "attachment; filename=\"" + name + ".jpg\"");
+       return new ResponseEntity<byte[]>(outputStream.toByteArray(), headers, HttpStatus.OK);
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
  
 }

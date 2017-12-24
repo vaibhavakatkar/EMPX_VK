@@ -335,7 +335,8 @@
 
                             <!-- START DEFAULT DATATABLE -->
                             <div class="panel panel-default">
-                                <div class="panel-heading">                                
+                                <div class="panel-heading">     
+                                                           
                                     <h3 class="panel-title">Default</h3>
                                     <ul class="panel-controls">
                                         <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
@@ -343,10 +344,18 @@
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>                                
                                 </div>
-                               
-                               
+                                 <div id="web">
+                               </div>
+                              
+                           <h2><a href="//file/aa.png" id="demo">Click here to download file</a></h2>
+    
+                                
+                                
+                              
+                             
+                               <a href="http://www.ss.org"></a></p>
 	             					  <div class="panel-body" >
-                                    <table id="example123" class="table datatable table-bordered"  >                              
+                                    <table id="example123" class="table datatable_simple"  >                              
                                         <thead>
                                             <tr>
                                                 <th>FILES</th>
@@ -440,25 +449,33 @@
 			
 			
 			$.ajax(settings).done(function(data) {
-				var parsedData = new Array();
+			//	var parsedData = new Array();
+			
+				var parsedData = JSON.parse(data);
+				//alert("asdas")
+				//alert(parsedData)
 				
+				for (x in parsedData) {
+   			 document.getElementById("demo").innerHTML += x + "<br>";
+   			$("#web").append("<a href='http:/jsp/FILE_UPLOAD/"+x+"' rel='external' data-direction='reverse'>"+x+"</a>");
+   		   	
+				}
 				
-				for(i=0 ;i<data.length;i++)
+				/* for(i=0 ;i<data.length;i++)
 					{
 					
-					var d= "\"FILES\":"+"\""+data[i]+"\"";
+					//var d= "\"file\":"+"\""+data[i]+"\"";
 			
-					  var cities = d;
-						alert(cities)
+					  var cities = data;
+						
 					   $('#example123').dataTable().fnAddData( [
 						   
 						  
-						   
-						   cities['FILES']
+						   cities['FILE_NAME']
 						  		] ); 
 					  
 					  
-					}
+					} */
 			
 			});
 		});
