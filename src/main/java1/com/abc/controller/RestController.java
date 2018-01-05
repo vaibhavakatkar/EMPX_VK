@@ -7,6 +7,11 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 import org.springframework.http.HttpHeaders;
@@ -53,14 +58,21 @@ public class RestController {
      
 	   File file = new File("/home/vaibhav/git/EMPX_VK/src/main/webapp/jsp/FILE_UPLOAD/");
        String[] fileList = file.list();
-  
-        	    HashMap<String , String> hm=new HashMap<>();
+       Map<String, List<String>> map = new HashMap<String, List<String>>();
+       List<String> newList = Arrays.asList(fileList);
+       List<String> files = new ArrayList<String>();
+       files.addAll(newList);
+       
+       
+       map.put("FILE_NAME", files);
+       
+        	  /*  HashMap<String , String> hm=new HashMap<>();
                for(String name:fileList){
-            	   hm.put( name,"FILE_NAME");
+            	   hm.put( "FILE_NAME",name);
                          
-               }
+               }*/
                Gson gson = new Gson(); 
-               String json = gson.toJson(hm); 
+               String json = gson.toJson(map); 
                System.out.println(json);
        return json;
   }

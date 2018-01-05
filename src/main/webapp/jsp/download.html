@@ -323,9 +323,21 @@
                 <!-- END BREADCRUMB -->
                 
                 <!-- PAGE TITLE -->
-                <div class="page-title">                    
+               <!--  <div class="page-title">                    
                     <h2><span class="fa fa-arrow-circle-o-left"></span>  FILE UPLOAD DEMO  </h2>
-                </div>
+                     ADD INPUT OF TYPE FILE WITH THE MULTIPLE OPTION
+				    <p>
+				        <input type="file" id="file" multiple />
+				    </p>
+				    
+				    SHOW RESULT HERE
+				    <p id="fp"></p>
+				
+				    <p>
+				        <input type="submit" value="Show Details" onclick="FileDetails()" 
+				            style="font:150% Georgia;font-style:italic;" />
+				    </p>
+				                </div> -->
                 <!-- END PAGE TITLE -->                
                <!-- PAGE CONTENT WRAPPER -->
                        <div class="page-content-wrap">                
@@ -344,32 +356,53 @@
                                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul>                                
                                 </div>
-                                 <div id="web">
-                               </div>
+                                
                               
-                           <h2><a href="//file/aa.png" id="demo">Click here to download file</a></h2>
-    
+                     <!--       <h2><a href="//file/aa.png" id="demo">Click here to download file</a></h2>
+     -->
                                 
                                 
                               
-                             
-                               <a href="http://www.ss.org"></a></p>
 	             					  <div class="panel-body" >
                                     <table id="example123" class="table datatable_simple"  >                              
                                         <thead>
                                             <tr>
-                                                <th>FILES</th>
+                                                <th>FILE_NAME</th>
                                             </tr>
                                         </thead>
                                     </table>
                                 </div>
                                 
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                      <div id="web" class="panel-body list-group list-group-contacts">  
+                                                                
+                                    <a href="#" class="list-group-item" id>                                    
+                                        <img src="assets/images/users/user3.jpg" class="pull-left" alt="Nadia Ali"/>
+                                        <span class="contacts-title">Nadia Ali</span>
+                                        <p >Singer-Songwriter</p>                                    
+                                        <div class="list-group-controls">
+                                            <button class="btn btn-primary btn-rounded"><span class="fa fa-pencil"></span></button>
+                                        </div>                                    
+                                    </a>                                                                
+                                      </div>
  					 
 														
-														
+									<ol>
+									  <h1>LIST FILES IN DIR</h1>
+									
+									  </ol>					
                             </div>
                             
                             <!-- END DEFAULT DATATABLE -->
+
+
+
 
 
                         </div>
@@ -440,45 +473,80 @@
 				"url" : "http://localhost:8080/cont/listofFiles",
 				"method" : "GET",
 				"headers" : {
-					"content-type" : "application/text",
+					"content-type" : "application/json",
 					"cache-control" : "no-cache",
 					"postman-token" : "66b52fa0-f910-c191-73a6-6d34d18693d1"
 				}
 			}
-			
-			
-			
-			$.ajax(settings).done(function(data) {
+		$.ajax(settings).done(function(data) {
 			//	var parsedData = new Array();
-			
+			alert(data)
 				var parsedData = JSON.parse(data);
 				//alert("asdas")
 				//alert(parsedData)
-				
-				for (x in parsedData) {
-   			 document.getElementById("demo").innerHTML += x + "<br>";
-   			$("#web").append("<a href='http:/jsp/FILE_UPLOAD/"+x+"' rel='external' data-direction='reverse'>"+x+"</a>");
-   		   	
+				console.log(parsedData);
+		
+				debugger;
+				var myObj=parsedData;
+				for(x in myObj.FILE_NAME) {
+   			/*  document.getElementById("demo").innerHTML += x + "<br>";
+   			
+   		 */	
+   		 alert("asdasdsd")
+   		 alert(myObj.FILE_NAME[x])
+   		 $("#web").append("<a href='http:/jsp/FILE_UPLOAD/"+myObj.FILE_NAME[x]+"'rel='external' data-direction='reverse'>"+myObj.FILE_NAME[x]+"</a>");
+   		 $("ol").append("<li></li>").append("<a href='http:/jsp/FILE_UPLOAD/"+myObj.FILE_NAME[x]+"'rel='external' data-direction='reverse'>"+myObj.FILE_NAME[x]+"</a>");  	
 				}
+		 	var	cities= {
+					  "data": [
+						  {
+							  "FILE_NAME" : "5a0802e27042ae189ac58ee5",
+							 },
+							 {
+							  "FILE_NAME" : "5a083c657042ae1d9ab5c820",
+							  
+							},
+							 {
+							  "FILE_NAME" : "5a083c707042ae1d9ab5c821",
+							 
+							},
+							 {
+							  "FILE_NAME" : "5a1b10b17042ae23848daaf6",
+							  
+							},
+							 {
+							  "FILE_NAME" : "5a1b15997042ae23848daaf7",
+							 
+							},
+							 {
+							  "FILE_NAME" : "5a1b21917042ae3022778a5d",
+							  
+							} ]
+					    
+					   
+					    ]
+				} 
 				
-				/* for(i=0 ;i<data.length;i++)
+				
+				
+				
+			//for(i in myObj.FILE_NAME)
 					{
-					
-					//var d= "\"file\":"+"\""+data[i]+"\"";
-			
-					  var cities = data;
-						
-					   $('#example123').dataTable().fnAddData( [
-						   
-						  
-						   cities['FILE_NAME']
-						  		] ); 
-					  
-					  
-					} */
-			
-			});
+				// var d= "\"file\":"+"["+myObj.FILE_NAME[i]+"],";
+				// var cities ="["+myObj.FILE_NAME[i]+"]";
+				 
+				 $('#example123').dataTable().fnAddData( [
+						 								  cities['data']
+														 ] ); 
+					  } 
+				});
 		});
+	</script>
+	<script  type="text/javascript">
+	 function FileDetails() {
+		   alert("FILES")
+		  
+	   }
 	</script>
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->                   
