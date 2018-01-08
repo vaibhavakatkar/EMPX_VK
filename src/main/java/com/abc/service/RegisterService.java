@@ -64,6 +64,22 @@ public class RegisterService {
 				Employee employee = mapper.convertValue(operator, Employee.class);
 				Id = employeeServiceImpl.Save(employee).getId();
 				break;
+			case "mongo_db":
+				 employee = mapper.convertValue(operator, Employee.class);
+				Id = employeeServiceImpl.Save(employee).getId();
+				break;
+			case "mysql":
+				 employee = mapper.convertValue(operator, Employee.class);
+				Id = employeeServiceImpl.Save(employee).getId();
+				break;
+			case "hive":
+				 employee = mapper.convertValue(operator, Employee.class);
+				Id = employeeServiceImpl.Save(employee).getId();
+				break;
+			case "impala":
+				 employee = mapper.convertValue(operator, Employee.class);
+				Id = employeeServiceImpl.Save(employee).getId();
+				break;
 		
 		}
 
