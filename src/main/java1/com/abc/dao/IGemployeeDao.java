@@ -6,15 +6,16 @@ import org.springframework.data.mongodb.repository.Query;
 
 
 import com.abc.model.Employee;
+import com.abc.model.Gemployee;
 
 
-public interface IMongoDao extends MongoRepository<Employee, String>{
+public interface IGemployeeDao extends MongoRepository<Gemployee, String>{
 	
 	
 	@Query(value="{ 'version' : ?0 }")
-	public Employee findAll(String version);	
+	public Gemployee findAll(String version);	
 	@Query(value="{ 'uuid' : ?0 , 'version' : ?1 }")
-	public Employee findOneByUuidAndVersion(String uuid, String version);
+	public Gemployee findOneByUuidAndVersion(String uuid, String version);
 	
 		
 }

@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.abc.dao.IMongoDao;
+import com.abc.dao.IEmployeeDao;
+import com.abc.dao.IGemployeeDao;
 import com.abc.model.Employee;
+import com.abc.model.Gemployee;
 import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -16,13 +18,21 @@ import com.mongodb.MongoClient;
 public class EmployeeServiceimpl {
 
 	@Autowired
-	IMongoDao iemployeeDao;
+	IEmployeeDao iemployeeDao;
+	
+
+	@Autowired
+	IGemployeeDao igemployeeDao ;
 	public List<Employee> findAll() {
 		return iemployeeDao.findAll();
 	}
 	public Employee Save(Employee emp) {
 		emp.exportBaseProperty();
 		return iemployeeDao.save(emp);
+	}
+	public Gemployee Save(Gemployee gemp) {
+		gemp.exportBaseProperty();
+		return igemployeeDao.save(gemp);
 	}
 	public Employee findOneByUuidAndVersion(String uuid, String version) {
 		return iemployeeDao.findOneByUuidAndVersion(uuid, version);
