@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
 
-import com.abc.model.Employee;
 import com.abc.model.Gemployee;
 
 
