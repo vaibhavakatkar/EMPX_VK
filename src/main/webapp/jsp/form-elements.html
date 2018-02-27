@@ -392,6 +392,26 @@
                                         </div>
                                     </div>  
                                     
+                                    
+                                    
+                                    
+                                    
+                                     <div class="form-group">
+                                        <label class="col-md-2 control-label">Datasource</label>
+                                        <div class="col-md-10">                                                                                            
+                                            <select class="form-control select" id="datasource">
+                                                <option>MONGO_DB</option>
+                                                <option>ORACLE</option>
+                                                <option>MYSQL</option>
+                                                <option>HIVE</option>
+                                                <option>IMPALA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Resume</label>
                                         <div class="col-md-10">
@@ -500,7 +520,8 @@
 
     var form = $('#form1');
     form.submit(function () {
-    
+    	var conceptName = $('#datasource').find(":selected").text();
+    alert(conceptName)
     	 var name={   "uuid" :$("#name").val(),
     	 			 "name": $("#email").val(),
     				 "version" : $("#company").val(),
@@ -515,7 +536,7 @@
          var settings = {
         		  "async": true,
         		  "crossDomain": true,
-        		  "url": "http://localhost:8080/Employee/submit?type=employee",
+        		  "url": "http://localhost:8080/Employee/submit?type="+$('#datasource').find(":selected").text(),
         		  "method": "POST",
         		  "headers": {
         		    "content-type": "application/json",

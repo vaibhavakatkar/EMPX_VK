@@ -7330,3 +7330,24 @@ li.ext_zip {
 .x-navigation-minimized .xn-logo{
 display:none;
 }
+
+
+
+
+
+
+
+
+
+
+.ui-content {
+    padding: 0 !important;
+}
+ 
+.ui-listview {
+    margin: 0 !important;
+}
+ 
+.example-wrapper, .example-wrapper div.iscroll-scroller {
+    width: 100% !important;
+}
