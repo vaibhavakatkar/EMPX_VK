@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.Query;
 import com.abc.model.Employee;
 
 
-public interface IEmployeeDao extends MongoRepository<Employee, String>{
+public interface IMongoDao extends MongoRepository<Employee, String>{
 	
 	
 	@Query(value="{ 'version' : ?0 }")

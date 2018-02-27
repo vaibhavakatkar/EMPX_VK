@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.abc.dao.IEmployeeDao;
+import com.abc.dao.IMongoDao;
 import com.abc.model.Employee;
 import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBObject;
@@ -16,7 +16,7 @@ import com.mongodb.MongoClient;
 public class EmployeeServiceimpl {
 
 	@Autowired
-	IEmployeeDao iemployeeDao;
+	IMongoDao iemployeeDao;
 	public List<Employee> findAll() {
 		return iemployeeDao.findAll();
 	}
