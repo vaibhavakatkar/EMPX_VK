@@ -1,3 +1,4 @@
+package test;
 import java.io.EOFException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
