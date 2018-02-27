@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.abc.model.Employee;
+import com.abc.model.Gemployee;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -64,13 +65,17 @@ public class RegisterService {
 				Employee employee = mapper.convertValue(operator, Employee.class);
 				Id = employeeServiceImpl.Save(employee).getId();
 				break;
-		
+			case "gemp":
+				Gemployee empe = mapper.convertValue(operator, Gemployee.class);
+				Id = employeeServiceImpl.Save(empe).getId();
+				break;	
 		}
 
 		}
 		return Id;
 
 }
+	
 	public String getOneByUuidAndVersion(String uuid, String version, String type) throws JsonProcessingException {
 		String result = null;
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();

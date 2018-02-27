@@ -29,7 +29,17 @@
 	<context:component-scan base-package="com.abc" />
 	<!-- <mvc:resources mapping="/app/**" location="/app"/> -->
 	<mvc:annotation-driven />
-	
+<!-- 	this code used bec allow api to use by other port which is angular 4200
+ -->	
+	 <mvc:cors>
+	<mvc:mapping path="/info/**"
+		allowed-origins="http://localhost:4200, http://localhost:8080"
+		allowed-methods="POST, GET, PUT, OPTIONS, DELETE"
+		allowed-headers="X-Auth-Token, Content-Type"
+		exposed-headers="application/json, custom-header2"
+		allow-credentials="false"
+		max-age="4800" />
+        </mvc:cors>
   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	
 	<bean id="propertyConfigurer"
