@@ -22,14 +22,6 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.babel.editor.rbeBuilder</name>
-<<<<<<< HEAD
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
-=======
->>>>>>> 00e89e8edb0538be1b86a6b2ac11fce5186a39bf
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -40,14 +32,11 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.springframework.ide.eclipse.boot.validation.springbootbuilder</name>
-<<<<<<< HEAD
-=======
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.m2e.core.maven2Builder</name>
->>>>>>> 00e89e8edb0538be1b86a6b2ac11fce5186a39bf
 			<arguments>
 			</arguments>
 		</buildCommand>
