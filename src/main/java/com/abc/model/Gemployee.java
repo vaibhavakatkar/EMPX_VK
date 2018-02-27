@@ -3,7 +3,7 @@ package com.abc.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="Gemployee")
-public class Gemployee  extends BaseEntity {
+public class Gemployee  extends BaseEntity1 {
 	private String fullname;
 	private String email;
 	private String phoneNumer;

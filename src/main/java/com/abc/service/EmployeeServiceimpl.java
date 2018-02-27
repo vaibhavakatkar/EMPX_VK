@@ -26,6 +26,10 @@ public class EmployeeServiceimpl {
 	public List<Employee> findAll() {
 		return iemployeeDao.findAll();
 	}
+	public List<Gemployee> findAllGemp() {
+
+		return igemployeeDao.findAll();
+	}
 	public Employee Save(Employee emp) {
 		emp.exportBaseProperty();
 		return iemployeeDao.save(emp);

@@ -45,6 +45,9 @@ public class RegisterService {
 			case "employee":
 				result = ow.writeValueAsString(employeeServiceImpl.findAll());
 				break;
+			case "gemp":
+				result = ow.writeValueAsString(employeeServiceImpl.findAllGemp());
+				break;	
 			}
 		}
 
