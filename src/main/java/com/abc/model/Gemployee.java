@@ -16,11 +16,6 @@ public class Gemployee  extends BaseEntity1 {
 	private String dob;
 	private String photo;
 	
-	
-	
-	
-	
-	
 	public String getFullname() {
 		return fullname;
 	}

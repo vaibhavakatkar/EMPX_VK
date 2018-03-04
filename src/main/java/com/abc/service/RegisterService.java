@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.abc.model.Employee;
 import com.abc.model.Gemployee;
+import com.abc.model.LoginDetails;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -19,7 +20,32 @@ public class RegisterService {
 
 	@Autowired
 	private EmployeeServiceimpl employeeServiceImpl;
+	
+	public String 	getLoginList(String type,String name) throws JsonProcessingException {
+		String result = null;
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		if (type != null && !type.isEmpty()) {
 
+			type = type.toLowerCase();
+			switch (type) {
+			case "logindetails":
+				result = ow.writeValueAsString(employeeServiceImpl.findLoginDetailByName(name));
+				break;
+			
+			
+			}
+			
+			
+		}
+
+		return result;
+	}
+
+	
+	
+	
+	
+	
 	public String getlinechart(String type) throws JsonProcessingException {
 		String result = null;
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -47,8 +73,11 @@ public class RegisterService {
 				break;
 			case "gemp":
 				result = ow.writeValueAsString(employeeServiceImpl.findAllGemp());
-				break;	
+				break;		
+			
 			}
+			
+			
 		}
 
 		return result;
@@ -72,6 +101,10 @@ public class RegisterService {
 				Gemployee empe = mapper.convertValue(operator, Gemployee.class);
 				Id = employeeServiceImpl.Save(empe).getId();
 				break;	
+			case "logindetails":
+				LoginDetails loginDetails = mapper.convertValue(operator, LoginDetails.class);
+				Id = employeeServiceImpl.Save(loginDetails).getId();
+				break;
 
 			case "mongo_db":
 				 employee = mapper.convertValue(operator, Employee.class);
@@ -112,4 +145,25 @@ public class RegisterService {
 		}
 		return result;
 	}
+
+	public String getGempByName(String name,String type) throws JsonProcessingException {
+		String result = null;
+		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		if (type != null && !type.isEmpty()) {
+			type = type.toLowerCase();
+			switch (type) {
+			
+			case "gempname":
+				result = ow.writeValueAsString(employeeServiceImpl.findGempByName(name));
+				break;
+			case "logindetail":
+				result = ow.writeValueAsString(employeeServiceImpl.findLoginDetailByName(name));
+				break;
+			}
+			
+		}
+		return result;
+	}
+	
+	
 }

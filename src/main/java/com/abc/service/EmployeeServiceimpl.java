@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.abc.dao.IEmployeeDao;
 import com.abc.dao.IGemployeeDao;
+import com.abc.dao.ILoginDetailsDao;
 import com.abc.model.Employee;
 import com.abc.model.Gemployee;
+import com.abc.model.LoginDetails;
 import com.mongodb.AggregationOutput;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -23,6 +25,11 @@ public class EmployeeServiceimpl {
 
 	@Autowired
 	IGemployeeDao igemployeeDao ;
+	
+
+	@Autowired
+	ILoginDetailsDao iLoginDetailsDao ;
+	
 	public List<Employee> findAll() {
 		return iemployeeDao.findAll();
 	}
@@ -30,6 +37,10 @@ public class EmployeeServiceimpl {
 
 		return igemployeeDao.findAll();
 	}
+	public List<LoginDetails>  findLoginDetailByName(String name) {
+		return  iLoginDetailsDao.findLoginDetailByName(name);
+	}
+	
 	public Employee Save(Employee emp) {
 		emp.exportBaseProperty();
 		return iemployeeDao.save(emp);
@@ -38,9 +49,20 @@ public class EmployeeServiceimpl {
 		gemp.exportBaseProperty();
 		return igemployeeDao.save(gemp);
 	}
+	public LoginDetails Save(LoginDetails loginDetails) {
+		loginDetails.exportBaseProperty();
+		return iLoginDetailsDao.save(loginDetails);
+	}
 	public Employee findOneByUuidAndVersion(String uuid, String version) {
 		return iemployeeDao.findOneByUuidAndVersion(uuid, version);
 	}
+	public Gemployee findGempByName(String name) {
+		return igemployeeDao.findGempByName(name);
+	}
+	/*public LoginDetails findLoginDetailByName(String name) {
+		return iLoginDetailsDao.findLoginDetailByName(name);
+	}*/
+	
 	public String getlinechartdata() {
 		String data=null;
 		 final MongoClient mongoClient = new MongoClient();

@@ -31,11 +31,25 @@ public class Empcontroller {
 	public @ResponseBody String getAll(@RequestParam("type") String type) throws JsonProcessingException {
 		return registerService.getDataList(type);
 	}
+	
+	@RequestMapping(value = "/getAllLogin", method = RequestMethod.GET)
+	public @ResponseBody String getAllLogin(@RequestParam("type") String type,@RequestParam("name") String name) throws JsonProcessingException {
+		return registerService.getLoginList(type,name);
+	}
 	@RequestMapping(value = "/getOneByUuidAndVersion", method = RequestMethod.GET)
 	public @ResponseBody String getOneByUuidAndVersion(@RequestParam("uuid") String uuid,
 			@RequestParam("version") String version, @RequestParam("type") String type) throws JsonProcessingException {
 		return registerService.getOneByUuidAndVersion(uuid, version, type);
 	}
+	
+	
+	@RequestMapping(value = "/getGempByName", method = RequestMethod.GET)
+	public @ResponseBody String getGempByName(@RequestParam("name") String name,
+		   @RequestParam("type") String type) throws JsonProcessingException {
+		return registerService.getGempByName(name, type);
+	}
+
+	
 	
 	@RequestMapping(value = "/submit", method = RequestMethod.POST)
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -44,6 +58,8 @@ public class Empcontroller {
 		String Id = registerService.save(document, type);
 		return new ResponseEntity<String>(Id, HttpStatus.OK);
 	}
+	
+	
 	
 	
 	

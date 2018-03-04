@@ -16,5 +16,7 @@ public interface IGemployeeDao extends MongoRepository<Gemployee, String>{
 	@Query(value="{ 'uuid' : ?0 , 'version' : ?1 }")
 	public Gemployee findOneByUuidAndVersion(String uuid, String version);
 	
-		
+	@Query(value="{ 'fullname' : ?0 }")
+	public Gemployee findGempByName(String fullname);
+	
 }

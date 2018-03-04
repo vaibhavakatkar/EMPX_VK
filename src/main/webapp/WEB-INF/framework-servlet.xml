@@ -27,9 +27,10 @@
 				http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
 	<context:component-scan base-package="com.abc" />
-	<!-- <mvc:resources mapping="/app/**" location="/app"/> -->
-	<mvc:annotation-driven />
-<!-- 	this code used bec allow api to use by other port which is angular 4200
+		<mvc:annotation-driven />
+	<!-- <mvc:resources mapping="/app/**" location="/app"/>
+
+	this code used bec allow api to use by other port which is angular 4200
  -->	
 	 <mvc:cors>
 	<mvc:mapping path="/info/**"
