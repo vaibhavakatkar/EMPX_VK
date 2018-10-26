@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.abc.service.RegisterService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-@CrossOrigin(origins = {"http://localhost:4200"}, maxAge = 4800, allowCredentials = "false")
+@CrossOrigin(origins = {"http://localhost:4200"}, maxAge = 4800, allowCredentials = "true")
 @Controller
 @RequestMapping(value ="Employee")
 public class Empcontroller {
@@ -32,7 +32,7 @@ public class Empcontroller {
 		return registerService.getDataList(type);
 	}
 	
-	@RequestMapping(value = "/getAllLogin", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllLogin", method = RequestMethod.POST)
 	public @ResponseBody String getAllLogin(@RequestParam("type") String type,@RequestParam("name") String name) throws JsonProcessingException {
 		return registerService.getLoginList(type,name);
 	}

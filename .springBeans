@@ -9,6 +9,8 @@
 	<configs>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/framework-servlet.xml</config>
+		<config>src/main/resources/security-config.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
