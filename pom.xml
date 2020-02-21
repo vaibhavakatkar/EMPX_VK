@@ -274,9 +274,5 @@
             </configuration>
         </plugin>
     </plugins>
-    
-    <finalName>EMPX_VK</finalName>
-  
 </build>
-  
 </project>
